@@ -1,11 +1,22 @@
 import Link from "next/link";
 
 const nav = [
-  { label: "Home", href: "#" },
-  { label: "About us", href: "#approach" },
   { label: "Services", href: "#product" },
-  { label: "Work", href: "#work" },
-  { label: "Blog", href: "#journal" },
+  { label: "Projects", href: "#work" },
+  { label: "About", href: "#approach" },
+];
+
+const skills = [
+  "App development",
+  "UX Design",
+  "UI Design",
+  "Cyber security",
+  "Machine learning",
+  "AI strategy",
+  "Data engineering",
+  "Cloud architecture",
+  "Product design",
+  "Web platforms",
 ];
 
 const marqueeLogos = [
@@ -56,102 +67,99 @@ const testimonials = [
 export default function Home() {
   return (
     <main className="relative overflow-hidden">
-      {/* Hero shell — full-viewport, centered, marquee-anchored */}
-      <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden">
-        {/* cinematic background */}
+      {/* Hero — QGTech Figma treatment */}
+      <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden text-cream">
+        {/* orange background field */}
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,123,74,0.28),transparent_55%),radial-gradient(ellipse_at_bottom,rgba(143,169,127,0.22),transparent_60%)]" />
-          <div className="orb h-[560px] w-[560px] -left-40 top-24 bg-rust/40" />
-          <div className="orb h-[520px] w-[520px] -right-32 top-40 bg-moss/30" />
-          <div className="orb h-[420px] w-[420px] left-1/2 top-1/3 -translate-x-1/2 bg-rust/20" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(7,7,10,0.4)_60%,rgba(7,7,10,0.9)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_20%_40%,#E86A2E_0%,#C24A18_45%,#7A2A0A_90%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(60%_80%_at_15%_50%,rgba(0,0,0,0.55),transparent_70%)]" />
+          <div className="grain absolute inset-0 opacity-60" />
         </div>
 
-        {/* Nav — centered */}
+        {/* Nav */}
         <header className="relative z-20">
-          <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-6">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="inline-block h-2 w-2 rounded-full bg-rust" />
-              <span className="font-display text-2xl leading-none tracking-tight">QuietGrowth</span>
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+            <Link href="/" aria-label="QGTech home" className="flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink-950 font-display text-lg lowercase text-cream">
+                qgt
+              </span>
             </Link>
-            <nav className="hidden justify-center gap-8 text-sm text-cream/70 md:flex">
+            <nav className="hidden items-center gap-10 text-sm text-cream/90 md:flex">
               {nav.map((n) => (
                 <a key={n.label} href={n.href} className="transition hover:text-cream">
                   {n.label}
                 </a>
               ))}
             </nav>
-            <div className="flex justify-end">
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-cream px-5 py-2.5 text-sm font-medium text-ink-950 transition hover:bg-rust hover:text-cream"
-              >
-                Get a Demo
-                <span className="transition group-hover:translate-x-0.5">→</span>
-              </a>
-            </div>
+            <a
+              href="#contact"
+              className="group inline-flex items-center gap-2 rounded-full bg-ink-950/90 px-6 py-3 text-sm font-medium text-cream shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:bg-ink-950"
+            >
+              Start a conversation
+            </a>
           </div>
         </header>
 
-        {/* Hero content — centered */}
-        <div className="relative z-10 flex flex-1 items-center justify-center px-6">
-          <div className="grain relative mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-            <div className="mb-8 inline-block">
-              <span className="relative inline-flex items-center gap-2 rounded-full border border-cream/15 bg-cream/[0.06] px-4 py-1.5 text-[11px] uppercase tracking-[0.24em] text-cream/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-moss animate-pulse" />
-                The future of AI-native businesses
-              </span>
+        {/* Hero body */}
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-10 px-6 pb-24 pt-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] md:pb-16">
+          {/* Left column: skills scroller */}
+          <div className="relative flex h-[420px] items-center md:h-[520px]">
+            <div className="relative h-full w-[240px] overflow-hidden">
+              <div className="animate-[verticalScroll_22s_linear_infinite] flex flex-col gap-4">
+                {[...skills, ...skills].map((s, i) => (
+                  <span
+                    key={`${s}-${i}`}
+                    className={`inline-flex w-max items-center rounded-full border px-5 py-2.5 text-sm backdrop-blur-sm transition ${
+                      i % 3 === 1
+                        ? "border-cream/40 bg-cream/15 text-cream"
+                        : "border-cream/25 bg-transparent text-cream/70"
+                    }`}
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+              {/* edge fades */}
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#C24A18] via-[#C24A18]/60 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#7A2A0A] via-[#7A2A0A]/60 to-transparent" />
             </div>
-            <h1 className="font-display leading-[0.95] tracking-tight text-[clamp(2.75rem,8vw,7rem)]">
-              Get <span className="gradient-text animate-shimmer">AI-ready</span>
+          </div>
+
+          {/* Right column: headline */}
+          <div className="relative max-w-xl md:justify-self-end">
+            <h1 className="font-display leading-[0.95] tracking-tight text-[clamp(3rem,7.5vw,6.25rem)]">
+              Technology built
               <br />
-              with the team
-              <br />
-              behind <span className="text-cream/70">QuietGrowth</span>
+              for what’s <span className="italic">next.</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-base text-cream/70 md:text-lg">
-              We partner with founders and operators to turn AI from a buzzword into shipped,
-              durable product infrastructure — with fewer errors, less busywork, and full visibility
-              from strategy to production.
+            <p className="mt-8 max-w-md text-base leading-relaxed text-cream/85 md:text-lg">
+              QGTech builds scalable digital products and AI-powered systems for ambitious
+              businesses. We only take a handful of engagements a year.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-2 rounded-full border border-cream/20 bg-transparent px-6 py-3 text-sm text-cream transition hover:border-cream/60"
-              >
-                Start Free Trial
-                <span className="transition group-hover:translate-x-0.5">→</span>
-              </a>
-              <a
-                href="#product"
-                className="group inline-flex items-center gap-2 rounded-full bg-cream px-6 py-3 text-sm font-medium text-ink-950 transition hover:bg-rust hover:text-cream"
-              >
-                Explore Services
-              </a>
-            </div>
           </div>
         </div>
 
-        {/* Trust marquee */}
-        <div className="relative z-10 pb-10 pt-14">
-          <p className="text-center text-[11px] uppercase tracking-[0.28em] text-cream/50">
-            Trusted by leading companies worldwide
-          </p>
-          <div className="relative mt-6 overflow-hidden">
-            <div className="flex w-max animate-[marquee_35s_linear_infinite] gap-14 pr-14">
-              {[...marqueeLogos, ...marqueeLogos, ...marqueeLogos].map((name, i) => (
-                <span
-                  key={`${name}-${i}`}
-                  className="font-display text-2xl tracking-tight text-cream/50 transition hover:text-cream md:text-3xl"
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-ink-950 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-ink-950 to-transparent" />
-          </div>
-        </div>
+        {/* Scroll-down indicator (bottom-right) */}
+        <a
+          href="#approach"
+          aria-label="Scroll to next section"
+          className="group absolute bottom-8 right-6 z-20 md:bottom-10 md:right-10"
+        >
+          <span className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-cream/30 bg-cream/5 backdrop-blur-sm transition group-hover:border-cream/60 group-hover:bg-cream/10">
+            <svg
+              viewBox="0 0 20 20"
+              className="h-5 w-5 animate-[scrollDown_1.8s_ease-in-out_infinite]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M10 4v12" />
+              <path d="M5 11l5 5 5-5" />
+            </svg>
+          </span>
+        </a>
       </section>
 
       {/* Approach / Pillars */}
