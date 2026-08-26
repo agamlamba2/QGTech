@@ -1,10 +1,15 @@
 import Link from "next/link";
 
 const nav = [
-  { label: "Product", href: "#product" },
-  { label: "Approach", href: "#approach" },
+  { label: "Home", href: "#" },
+  { label: "About us", href: "#approach" },
+  { label: "Services", href: "#product" },
   { label: "Work", href: "#work" },
-  { label: "Journal", href: "#journal" },
+  { label: "Blog", href: "#journal" },
+];
+
+const marqueeLogos = [
+  "Northwind", "Halcyon", "Ledger", "Fieldnote", "Cove", "Meridian", "Atlas", "Bramble",
 ];
 
 const pillars = [
@@ -51,78 +56,100 @@ const testimonials = [
 export default function Home() {
   return (
     <main className="relative overflow-hidden">
-      {/* ambient orbs */}
-      <div className="orb h-[520px] w-[520px] -left-40 -top-40 bg-rust/40" />
-      <div className="orb h-[480px] w-[480px] right-[-160px] top-[220px] bg-moss/30" />
-      <div className="orb h-[600px] w-[600px] left-1/3 top-[1200px] bg-rust/20" />
-
-      {/* Nav */}
-      <header className="relative z-20">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-full bg-rust" />
-            <span className="font-display text-2xl leading-none tracking-tight">QuietGrowth</span>
-          </Link>
-          <nav className="hidden items-center gap-8 text-sm text-cream/70 md:flex">
-            {nav.map((n) => (
-              <a key={n.label} href={n.href} className="transition hover:text-cream">
-                {n.label}
-              </a>
-            ))}
-          </nav>
-          <a
-            href="#contact"
-            className="rounded-full border border-cream/15 bg-cream/5 px-4 py-2 text-sm transition hover:border-cream/40 hover:bg-cream/10"
-          >
-            Start a conversation →
-          </a>
+      {/* Hero shell — full-viewport, centered, marquee-anchored */}
+      <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden">
+        {/* cinematic background */}
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,123,74,0.28),transparent_55%),radial-gradient(ellipse_at_bottom,rgba(143,169,127,0.22),transparent_60%)]" />
+          <div className="orb h-[560px] w-[560px] -left-40 top-24 bg-rust/40" />
+          <div className="orb h-[520px] w-[520px] -right-32 top-40 bg-moss/30" />
+          <div className="orb h-[420px] w-[420px] left-1/2 top-1/3 -translate-x-1/2 bg-rust/20" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(7,7,10,0.4)_60%,rgba(7,7,10,0.9)_100%)]" />
         </div>
-      </header>
 
-      {/* Hero — single fold */}
-      <section className="relative z-10 flex min-h-[calc(100svh-96px)] items-center">
-        <div className="grain relative mx-auto w-full max-w-7xl px-6 py-10">
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-cream/10 bg-cream/5 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cream/70">
-            <span className="h-1.5 w-1.5 rounded-full bg-moss animate-pulse" />
-            Now booking Q1 partnerships
-          </p>
-          <h1 className="font-display text-[clamp(2.5rem,7.5vw,6.5rem)] leading-[0.98] tracking-tight">
-            Get <span className="gradient-text animate-shimmer">AI-ready</span> with the team
-            <br className="hidden sm:block" /> behind <span className="text-cream/70">QuietGrowth</span>.
-          </h1>
-          <p className="mt-6 max-w-2xl text-base text-cream/70 md:text-lg">
-            We partner with founders and operators to turn AI from a buzzword into shipped,
-            durable product infrastructure. A handful of engagements a year — yours could be one.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-cream px-6 py-3 text-sm font-medium text-ink-950 transition hover:bg-rust hover:text-cream"
-            >
-              Start a project
-              <span className="transition group-hover:translate-x-0.5">→</span>
-            </a>
-            <a
-              href="#work"
-              className="inline-flex items-center gap-2 rounded-full border border-cream/15 px-6 py-3 text-sm text-cream/80 transition hover:border-cream/40 hover:text-cream"
-            >
-              See our work
-            </a>
+        {/* Nav — centered */}
+        <header className="relative z-20">
+          <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-6">
+            <Link href="/" className="flex items-center gap-2">
+              <span className="inline-block h-2 w-2 rounded-full bg-rust" />
+              <span className="font-display text-2xl leading-none tracking-tight">QuietGrowth</span>
+            </Link>
+            <nav className="hidden justify-center gap-8 text-sm text-cream/70 md:flex">
+              {nav.map((n) => (
+                <a key={n.label} href={n.href} className="transition hover:text-cream">
+                  {n.label}
+                </a>
+              ))}
+            </nav>
+            <div className="flex justify-end">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-cream px-5 py-2.5 text-sm font-medium text-ink-950 transition hover:bg-rust hover:text-cream"
+              >
+                Get a Demo
+                <span className="transition group-hover:translate-x-0.5">→</span>
+              </a>
+            </div>
           </div>
+        </header>
 
-          {/* compact metrics */}
-          <div className="mt-10 grid grid-cols-2 gap-4 border-t border-cream/10 pt-6 md:grid-cols-4 md:gap-6">
-            {[
-              ["12", "shipped platforms"],
-              ["6 wks", "median first release"],
-              ["4", "engagements a year"],
-              ["100%", "founder referrals"],
-            ].map(([k, v]) => (
-              <div key={v}>
-                <div className="font-display text-2xl tracking-tight text-cream md:text-3xl">{k}</div>
-                <div className="mt-1 text-[10px] uppercase tracking-widest text-cream/50 md:text-xs">{v}</div>
-              </div>
-            ))}
+        {/* Hero content — centered */}
+        <div className="relative z-10 flex flex-1 items-center justify-center px-6">
+          <div className="grain relative mx-auto flex w-full max-w-5xl flex-col items-center text-center">
+            <div className="mb-8 inline-block">
+              <span className="relative inline-flex items-center gap-2 rounded-full border border-cream/15 bg-cream/[0.06] px-4 py-1.5 text-[11px] uppercase tracking-[0.24em] text-cream/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-moss animate-pulse" />
+                The future of AI-native businesses
+              </span>
+            </div>
+            <h1 className="font-display leading-[0.95] tracking-tight text-[clamp(2.75rem,8vw,7rem)]">
+              Get <span className="gradient-text animate-shimmer">AI-ready</span>
+              <br />
+              with the team
+              <br />
+              behind <span className="text-cream/70">QuietGrowth</span>
+            </h1>
+            <p className="mt-8 max-w-2xl text-base text-cream/70 md:text-lg">
+              We partner with founders and operators to turn AI from a buzzword into shipped,
+              durable product infrastructure — with fewer errors, less busywork, and full visibility
+              from strategy to production.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-full border border-cream/20 bg-transparent px-6 py-3 text-sm text-cream transition hover:border-cream/60"
+              >
+                Start Free Trial
+                <span className="transition group-hover:translate-x-0.5">→</span>
+              </a>
+              <a
+                href="#product"
+                className="group inline-flex items-center gap-2 rounded-full bg-cream px-6 py-3 text-sm font-medium text-ink-950 transition hover:bg-rust hover:text-cream"
+              >
+                Explore Services
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Trust marquee */}
+        <div className="relative z-10 pb-10 pt-14">
+          <p className="text-center text-[11px] uppercase tracking-[0.28em] text-cream/50">
+            Trusted by leading companies worldwide
+          </p>
+          <div className="relative mt-6 overflow-hidden">
+            <div className="flex w-max animate-[marquee_35s_linear_infinite] gap-14 pr-14">
+              {[...marqueeLogos, ...marqueeLogos, ...marqueeLogos].map((name, i) => (
+                <span
+                  key={`${name}-${i}`}
+                  className="font-display text-2xl tracking-tight text-cream/50 transition hover:text-cream md:text-3xl"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-ink-950 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-ink-950 to-transparent" />
           </div>
         </div>
       </section>
