@@ -79,24 +79,22 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative z-10 mx-auto max-w-7xl px-6 pb-32 pt-20 md:pt-28">
-        <div className="grain relative">
-          <p className="mb-8 inline-flex items-center gap-2 rounded-full border border-cream/10 bg-cream/5 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cream/70">
+      {/* Hero — single fold */}
+      <section className="relative z-10 flex min-h-[calc(100svh-96px)] items-center">
+        <div className="grain relative mx-auto w-full max-w-7xl px-6 py-10">
+          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-cream/10 bg-cream/5 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cream/70">
             <span className="h-1.5 w-1.5 rounded-full bg-moss animate-pulse" />
             Now booking Q1 partnerships
           </p>
-          <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.95] tracking-tight">
-            Software that <span className="gradient-text animate-shimmer">compounds.</span>
-            <br />
-            <span className="text-cream/60">Built quietly.</span> Shipped with intent.
+          <h1 className="font-display text-[clamp(2.5rem,7.5vw,6.5rem)] leading-[0.98] tracking-tight">
+            Get <span className="gradient-text animate-shimmer">AI-ready</span> with the team
+            <br className="hidden sm:block" /> behind <span className="text-cream/70">QuietGrowth</span>.
           </h1>
-          <p className="mt-10 max-w-2xl text-lg text-cream/70 md:text-xl">
-            QuietGrowth is a small studio building product infrastructure for founders and operators
-            who prefer durable outcomes over noisy launches. We take a handful of engagements a year.
-            Yours could be one of them.
+          <p className="mt-6 max-w-2xl text-base text-cream/70 md:text-lg">
+            We partner with founders and operators to turn AI from a buzzword into shipped,
+            durable product infrastructure. A handful of engagements a year — yours could be one.
           </p>
-          <div className="mt-12 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-cream px-6 py-3 text-sm font-medium text-ink-950 transition hover:bg-rust hover:text-cream"
@@ -112,8 +110,8 @@ export default function Home() {
             </a>
           </div>
 
-          {/* metrics */}
-          <div className="mt-24 grid grid-cols-2 gap-6 border-t border-cream/10 pt-10 md:grid-cols-4">
+          {/* compact metrics */}
+          <div className="mt-10 grid grid-cols-2 gap-4 border-t border-cream/10 pt-6 md:grid-cols-4 md:gap-6">
             {[
               ["12", "shipped platforms"],
               ["6 wks", "median first release"],
@@ -121,8 +119,8 @@ export default function Home() {
               ["100%", "founder referrals"],
             ].map(([k, v]) => (
               <div key={v}>
-                <div className="font-display text-4xl tracking-tight text-cream md:text-5xl">{k}</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-cream/50">{v}</div>
+                <div className="font-display text-2xl tracking-tight text-cream md:text-3xl">{k}</div>
+                <div className="mt-1 text-[10px] uppercase tracking-widest text-cream/50 md:text-xs">{v}</div>
               </div>
             ))}
           </div>
