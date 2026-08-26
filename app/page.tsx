@@ -102,26 +102,26 @@ export default function Home() {
 
         {/* Hero body */}
         <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-10 px-6 pb-24 pt-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] md:pb-16">
-          {/* Left column: skills scroller */}
-          <div className="relative flex h-[420px] items-center md:h-[520px]">
-            <div className="relative h-full w-[240px] overflow-hidden">
-              <div className="animate-[verticalScroll_22s_linear_infinite] flex flex-col gap-4">
+          {/* Left column: skills scroller — 5-visible window */}
+          <div className="relative flex items-center">
+            <div className="relative h-[320px] w-[240px] overflow-hidden">
+              <div className="animate-[verticalScroll_22s_linear_infinite] flex flex-col gap-3">
                 {[...skills, ...skills].map((s, i) => (
                   <span
                     key={`${s}-${i}`}
-                    className={`inline-flex w-max items-center rounded-full border px-5 py-2.5 text-sm backdrop-blur-sm transition ${
+                    className={`inline-flex h-11 w-max items-center rounded-full border px-5 text-sm backdrop-blur-sm transition ${
                       i % 3 === 1
                         ? "border-cream/40 bg-cream/15 text-cream"
-                        : "border-cream/25 bg-transparent text-cream/70"
+                        : "border-cream/25 bg-transparent text-cream/80"
                     }`}
                   >
                     {s}
                   </span>
                 ))}
               </div>
-              {/* edge fades */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#C24A18] via-[#C24A18]/60 to-transparent" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#7A2A0A] via-[#7A2A0A]/60 to-transparent" />
+              {/* edge fades — hide the partial 6th on top and bottom */}
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#C24A18] to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#7A2A0A] to-transparent" />
             </div>
           </div>
 
